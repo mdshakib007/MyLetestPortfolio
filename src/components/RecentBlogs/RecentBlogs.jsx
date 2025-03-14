@@ -7,7 +7,7 @@ const RecentBlogs = () => {
     const [recentPosts, setRecentPosts] = useState([]);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/v1/blog/recent-posts/')
+        fetch('https://blog-mdshakib007-backend.vercel.app/api/v1/blog/recent-posts/')
             .then(res => res.json())
             .then(data => setRecentPosts(data));
     }, [])
