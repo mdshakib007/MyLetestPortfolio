@@ -1,7 +1,7 @@
 import React from 'react';
 import AboutMe from '../AboutMe/AboutMe';
 import Achievements from '../Achievements/Achievements';
-import Blogs from '../Blogs/Blogs';
+import RecentBlogs from '../RecentBlogs/RecentBlogs';
 import ContactMe from '../ContactMe/ContactMe';
 import Education from '../Education/Education';
 import Experiences from '../Experiences/Experiences';
@@ -20,7 +20,7 @@ const Home = () => {
             <Experiences></Experiences>
             <Achievements></Achievements>
             <Projects></Projects>
-            <Blogs></Blogs>
+            <RecentBlogs></RecentBlogs>
             <TalksAndFeatures></TalksAndFeatures>
             <ContactMe></ContactMe>
         </main>
