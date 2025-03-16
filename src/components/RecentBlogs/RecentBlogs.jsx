@@ -2,12 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import BlogCard from '../BlogCard/BlogCard';
+import { Link } from 'react-router';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 
 const RecentBlogs = () => {
     const [recentPosts, setRecentPosts] = useState([]);
 
     useEffect(() => {
-        fetch('https://blog-mdshakib007-backend.vercel.app/api/v1/blog/recent-posts/')
+        fetch(`${BASE_URL}/api/v1/blog/recent-posts/`)
             .then(res => res.json())
             .then(data => setRecentPosts(data));
     }, [])
@@ -23,11 +26,11 @@ const RecentBlogs = () => {
                 }
             </div>
             <div className='flex justify-center items-center'>
-                <a
+                <Link
                     className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
-                    href='https://github.com/mdshakib007?tab=repositories' target='_blank'>
+                    to='/posts'>
                     All Posts
-                </a>
+                </Link>
             </div>
         </section>
     );

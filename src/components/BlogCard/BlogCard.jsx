@@ -34,14 +34,14 @@ const BlogCard = ({ blogPost }) => {
     };
 
     const commentPost = async () => {
-        const commentBody = document.getElementById("comment-box").value;
+        const commentBody = document.getElementById(`comment-box-${id}`).value;
         if (!commentBody) {
             toast.error("Please fill out the field");
             return;
         }
         try {
             const commentData = await handleComment(id, "Anonymous User", commentBody);
-            document.getElementById("comment-box").value = "";
+            document.getElementById(`comment-box-${id}`).value = "";
             setComment(commentData.body);
             setCommentCount(commentCount + 1);
         } catch (error) {
@@ -81,11 +81,11 @@ const BlogCard = ({ blogPost }) => {
                 </p>
             </div>
 
-            <div 
-            onClick={handleRedirect}
-            className='cursor-pointer hover:text-yellow-500'>
+            <div
+                onClick={handleRedirect}
+                className='cursor-pointer hover:text-yellow-500'>
                 <div>
-                    <img src={image} alt="Blog cover" />
+                    {image && <img src={image} alt="Blog cover" />}
                     <h1 className='text-2xl md:text-4xl font-bold p-3'>{title}</h1>
                 </div>
 
@@ -105,26 +105,27 @@ const BlogCard = ({ blogPost }) => {
                 </div>
             </div>
 
-            <div className='flex justify-between m-3 border-y border-black py-2 text-gray-300 overflow-x-auto'>
+            <div className='flex justify-between items-center m-3 border-y border-black py-2 text-gray-300'>
                 <button
-                    className='btn btn-outline border-none flex gap-2 items-center text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
                     onClick={clapPost}
                 >
                     <PiHandsClapping /> Clap
                 </button>
                 <button
-                    className='btn btn-outline border-none flex gap-2 items-center text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
                     onClick={toggleCommentBox}
                 >
                     <FaRegCommentAlt /> Comment
                 </button>
                 <button
-                    className='btn btn-outline border-none flex gap-2 items-center text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
                     onClick={copyPostLink}
                 >
                     <PiShareFatLight /> Share
                 </button>
             </div>
+
 
             {/* Conditionally render the comment box with a slide-down animation */}
             {showCommentBox && (
@@ -136,7 +137,7 @@ const BlogCard = ({ blogPost }) => {
                                 type="text"
                                 placeholder="Write a comment as anonymous..."
                                 className="bg-transparent flex-1 outline-none text-gray-200 text-sm placeholder-gray-400"
-                                id="comment-box"
+                                id={`comment-box-${id}`}
                             />
                             <button
                                 onClick={commentPost}

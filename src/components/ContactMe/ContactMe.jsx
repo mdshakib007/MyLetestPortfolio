@@ -9,9 +9,9 @@ const ContactMe = () => {
                 <img src="contact.svg" alt="" className='mx-6 h-64 lg:h-96' />
                 <div className=''>
                     <a
-                        className='text-3xl font-bold cursor-pointer text-yellow-500'
-                        href='mailto:commonshakib@gmail.com' >
-                        commonshakib@gmail.com
+                        className='text-lg md:text-xl lg:text-3xl font-bold cursor-pointer text-yellow-500'
+                        href='mailto:shakibahmed.528874@gmail.com' >
+                        shakibahmed.528874@gmail.com
                     </a>
                     <ContactIDs />
                 </div>
