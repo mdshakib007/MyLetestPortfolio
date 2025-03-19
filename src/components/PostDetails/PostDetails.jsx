@@ -6,8 +6,7 @@ import { CiRead } from "react-icons/ci";
 import { IoSend } from "react-icons/io5";
 import { handleClap, handleComment } from '../../utils/blogActions';
 import toast from 'react-hot-toast';
-import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
 import { HashLoader } from 'react-spinners';
 
 
@@ -31,14 +30,14 @@ const PostDetails = () => {
     };
 
     const commentPost = async () => {
-        const commentBody = document.getElementById(`comment-${postId}-box`).value;
+        const commentBody = document.getElementById(`comment-box`).value;
         if (!commentBody) {
             toast.error("Please fill out the field");
             return;
         }
         try {
             const commentData = await handleComment(postId, "Anonymous User", commentBody);
-            document.getElementById(`comment-${postId}-box`).value = "";
+            document.getElementById(`comment-box`).value = "";
             setComments([commentData, ...comments]);
             setCommentCount(commentCount + 1);
         } catch (error) {
@@ -63,7 +62,7 @@ const PostDetails = () => {
             .then(res => res.json())
             .then(data => {
                 setPostDetails(data);
-                setTotalClaps(data.claps || 0);
+                setTotalClaps(data.clap_count || 0);
                 setComments(data.comments || []);
                 setCommentCount(data.comments?.length || 0);
             })
@@ -101,10 +100,9 @@ const PostDetails = () => {
                             <h1 className='text-2xl md:text-4xl font-bold p-3'>{postDetails?.title}</h1>
                             {postDetails?.image && <img src={postDetails.image} alt="Blog cover" className="w-full object-cover" />}
 
-                            <div className='prose prose-invert max-w-none'>
-                                <Markdown remarkPlugins={[remarkGfm]}>{postDetails?.body}</Markdown>
-                            </div>
-
+                            <CustomMarkdown className="p-4">
+                                {postDetails?.body}
+                            </CustomMarkdown>
                         </div>
 
                         <div className='flex flex-wrap gap-2 mx-3 my-5'>
@@ -148,7 +146,7 @@ const PostDetails = () => {
                                     type="text"
                                     placeholder="Write a comment as anonymous..."
                                     className="bg-transparent w-full outline-none text-gray-200 text-xs md:text-sm placeholder-gray-400"
-                                    id={`comment-${postId}-box`}
+                                    id={`comment-box`}
                                 />
                                 <button
                                     onClick={commentPost}
@@ -159,6 +157,7 @@ const PostDetails = () => {
                             </div>
                         </div>
 
+                        <h1 className='my-2 text-lg font-semibold'>Recent Comments</h1>
                         <div className="space-y-4">
                             {comments.map((comment, index) => (
                                 <div key={index} className="flex items-start gap-2">
