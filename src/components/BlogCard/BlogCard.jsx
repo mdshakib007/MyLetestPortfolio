@@ -65,7 +65,7 @@ const BlogCard = ({ blogPost }) => {
     };
 
     return (
-        <div className='bg-gray-700 shadow-lg shadow-black rounded-lg border border-black'>
+        <div className='bg-gray-700 rounded-lg shadow-md shadow-gray-900'>
             <div className='flex justify-between items-center p-3'>
                 <div className='flex gap-4 items-center'>
                     <img src="shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
@@ -93,9 +93,9 @@ const BlogCard = ({ blogPost }) => {
                     {tags.map(tag => (
                         <span
                             key={tag.id}
-                            className='badge bg-yellow-500 text-black rounded-full px-2 py-1'
+                            className='bg-yellow-500 text-black rounded-full px-2'
                         >
-                            {tag.name}
+                            # {tag.name}
                         </span>
                     ))}
                 </div>
@@ -107,19 +107,19 @@ const BlogCard = ({ blogPost }) => {
 
             <div className='flex justify-between items-center m-3 border-y border-black py-2 text-gray-300'>
                 <button
-                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-sm md:text-lg px-2 py-1'
                     onClick={clapPost}
                 >
                     <PiHandsClapping /> Clap
                 </button>
                 <button
-                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-sm md:text-lg px-2 py-1'
                     onClick={toggleCommentBox}
                 >
                     <FaRegCommentAlt /> Comment
                 </button>
                 <button
-                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-lg md:text-xl'
+                    className='flex-1 flex justify-center items-center btn btn-outline border-none text-sm md:text-lg px-2 py-1'
                     onClick={copyPostLink}
                 >
                     <PiShareFatLight /> Share
@@ -129,19 +129,19 @@ const BlogCard = ({ blogPost }) => {
 
             {/* Conditionally render the comment box with a slide-down animation */}
             {showCommentBox && (
-                <div className="animate-slideDown p-3 border-t border-gray-600">
+                <div className="animate-slideDown p-3 border-t border-gray-600 w-full max-w-full">
                     <div className="flex items-center gap-2 mb-4">
-                        <img src="shakib.png" alt="User" className="h-10 w-10 rounded-full" />
-                        <div className="flex items-center bg-gray-800 rounded-full px-3 py-2 flex-1">
+                        <img src="shakib.png" alt="User" className="h-8 w-8 rounded-full" />
+                        <div className="flex items-center bg-gray-800 rounded-full px-3 py-2 w-full">
                             <input
                                 type="text"
                                 placeholder="Write a comment as anonymous..."
-                                className="bg-transparent flex-1 outline-none text-gray-200 text-sm placeholder-gray-400"
+                                className="bg-transparent w-full outline-none text-gray-200 text-xs md:text-sm placeholder-gray-400"
                                 id={`comment-box-${id}`}
                             />
                             <button
                                 onClick={commentPost}
-                                className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition"
+                                className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition text-xs md:text-sm"
                             >
                                 <IoSend size={18} />
                             </button>

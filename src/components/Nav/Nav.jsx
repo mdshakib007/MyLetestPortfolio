@@ -43,7 +43,7 @@ const Nav = () => {
             <div className="container mx-auto flex justify-between items-center py-4 px-6">
                 {/* Logo / Profile */}
                 <div className="flex items-center cursor-pointer" onClick={reloadPage}>
-                    <img src="shakib.jpeg" alt="Shakib" className="h-14 w-14 rounded-full mr-3" />
+                    <img src="/shakib.jpeg" alt="Shakib" className="h-14 w-14 rounded-full mr-3" />
                     <span className="text-xl font-semibold">MD Shakib Ahmed</span>
                 </div>
 

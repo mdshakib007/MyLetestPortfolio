@@ -66,7 +66,7 @@ const BlogPosts = () => {
     };
 
     return (
-        <section id='all-blogs' className='container mx-auto mt-24 items-center px-6'>
+        <section id='all-blogs' className='container mx-auto mt-24 items-center px-6 max-w-4xl'>
 
             {/* Search Bar */}
             <form onSubmit={handleSearch}>
@@ -123,7 +123,7 @@ const BlogPosts = () => {
                     <h1 className='text-2xl md:text-4xl'>No Post Found</h1>
                 </div>
             ) : (
-                <div className='min-h-[50vh] grid grid-cols-1 lg:grid-cols-2 gap-5'>
+                <div className='min-h-[50vh] grid grid-cols-1 gap-5'>
                     {posts.map(post => (
                         <BlogCard key={post.id} blogPost={post} />
                     ))}
@@ -142,8 +142,8 @@ const BlogPosts = () => {
                         <FaArrowLeft /> Previous
                     </button>
 
-                    <span className='text-gray-300 text-lg'>
-                        {posts.length}/{totalPosts} posts
+                    <span className='text-gray-400 text-lg'>
+                        {posts.length} / {totalPosts} Posts
                     </span>
 
                     <button
