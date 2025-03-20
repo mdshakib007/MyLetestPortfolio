@@ -65,10 +65,10 @@ const BlogCard = ({ blogPost }) => {
     };
 
     return (
-        <div className='bg-gray-700 rounded-lg shadow-md shadow-gray-900'>
+        <div className='bg-gray-700 rounded-lg shadow-md shadow-gray-900 flex flex-col h-full'>
             <div className='flex justify-between items-center p-3'>
                 <div className='flex gap-4 items-center'>
-                    <img src="shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
+                    <img src="/shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
                     <div>
                         <h4 className='text-lg font-bold'>MD Shakib Ahmed</h4>
                         <p className='text-sm text-gray-300 flex items-center gap-1'>
@@ -81,28 +81,28 @@ const BlogCard = ({ blogPost }) => {
                 </p>
             </div>
 
-            <div
-                onClick={handleRedirect}
-                className='cursor-pointer hover:text-yellow-500'>
+            <div className="flex-grow cursor-pointer hover:text-yellow-500" onClick={handleRedirect}>
                 <div>
-                    {image && <img src={image} alt="Blog cover" />}
-                    <h1 className='text-2xl md:text-4xl font-bold p-3'>{title}</h1>
-                </div>
+                    <div>
+                        {image && <img src={image} alt="Blog cover" className='w-full' />}
+                        <h1 className='text-2xl md:text-4xl font-bold p-3'>{title}</h1>
+                    </div>
 
-                <div className='flex flex-wrap gap-2 m-3'>
-                    {tags.map(tag => (
-                        <span
-                            key={tag.id}
-                            className='bg-yellow-500 text-black rounded-full px-2'
-                        >
-                            # {tag.name}
-                        </span>
-                    ))}
                 </div>
+            </div>
+            <div className='flex flex-wrap gap-2 m-3'>
+                {tags.map(tag => (
+                    <span
+                        key={tag.id}
+                        className='bg-yellow-500 text-black rounded-full px-2'
+                    >
+                        # {tag.name}
+                    </span>
+                ))}
+            </div>
 
-                <div className='px-3 text-gray-300 text-sm'>
-                    <p>{totalClaps} Claps • {commentCount} Comments</p>
-                </div>
+            <div className='px-3 text-gray-300 text-sm'>
+                <p>{totalClaps} Claps • {commentCount} Comments</p>
             </div>
 
             <div className='flex justify-between items-center m-3 border-y border-black py-2 text-gray-300'>
@@ -131,7 +131,7 @@ const BlogCard = ({ blogPost }) => {
             {showCommentBox && (
                 <div className="animate-slideDown p-3 border-t border-gray-600 w-full max-w-full">
                     <div className="flex items-center gap-2 mb-4">
-                        <img src="shakib.png" alt="User" className="h-8 w-8 rounded-full" />
+                        <img src="/shakib.png" alt="User" className="h-8 w-8 rounded-full" />
                         <div className="flex items-center bg-gray-800 rounded-full px-3 py-2 w-full">
                             <input
                                 type="text"
@@ -150,7 +150,7 @@ const BlogCard = ({ blogPost }) => {
                     {comment && (
                         <div className="space-y-4">
                             <div className="flex items-start gap-2">
-                                <img src="shakib.png" alt="User" className="h-8 w-8 rounded-full" />
+                                <img src="/shakib.png" alt="User" className="h-8 w-8 rounded-full" />
                                 <div className='bg-gray-800 p-3 rounded-lg'>
                                     <p className="text-sm font-semibold text-yellow-500">Anonymous User</p>
                                     <p className="text-sm text-gray-300">{comment}</p>

@@ -8,7 +8,7 @@ const ContactIDs = () => {
         <ul className="flex gap-5 flex-wrap mt-10 text-4xl items-center justify-center">
             <li>
                 <a href="https://youtube.com/@AlgoAspire/" target="_blank" className="hover:text-yellow-500 tooltip tooltip-warning" data-tip="AlgoAspire">
-                    <img src="AlgoAspire-icon.png" alt="AA" className="h-14 w-14 rounded-full" />
+                    <img src="/AlgoAspire-icon.png" alt="AA" className="h-14 w-14 rounded-full" />
                 </a>
             </li>
             <li>

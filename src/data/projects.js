@@ -5,6 +5,8 @@ const projects = [
         description: "A feature-rich blogging platform built with DRF, TailwindCSS, daisyUI, and JavaScript! It supports token-based auth, supports markdown, multi-chapter stories, likes/comments, bookmarks, personalized dashboards, and creator verification. This project sharpened my DRF, API design, authentication, and UI/UX skills.",
         btn_text: "Live Link",
         btn_link: "https://aspire-thought.vercel.app/",
+        btn_text2: "Details",
+        btn_link2: "https://mdshakib007.vercel.app/posts/9",
         shadow: "shadow-cyan-500"
     },
     {
@@ -13,6 +15,8 @@ const projects = [
         description: "My first full-stack DRF project! Built an API-driven mango marketplace with token-based auth, email verification, dynamic seller dashboard, order management, product filtering, and SSLCommerz payment integration.",
         btn_text: "Live Link",
         btn_link: "https://juicycart-tropicals.vercel.app/",
+        btn_text2: "Details",
+        btn_link2: "https://mdshakib007.vercel.app/posts/10",
         shadow: "shadow-green-500",
     },
     {
