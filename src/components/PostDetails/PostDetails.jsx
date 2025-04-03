@@ -218,7 +218,7 @@ const PostDetails = () => {
 
                                     <div className='flex justify-between'>
                                         <button
-                                            className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            className='btn btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
                                             onClick={handlePrevPage}
                                             disabled={!prevPage}  // Disable when there is no previous page
                                         >
@@ -226,7 +226,7 @@ const PostDetails = () => {
                                         </button>
 
                                         <button
-                                            className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            className='btn btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
                                             onClick={handleNextPage}
                                             disabled={!nextPage}  // Disable when there is no next page
                                         >
