@@ -86,6 +86,7 @@ const BlogCard = ({ blogPost }) => {
                     <div>
                         {image && <img src={image} alt="Blog cover" className='w-full' />}
                         <h1 className='text-2xl md:text-4xl font-bold p-3'>{title}</h1>
+                        <p className='text-gray-300 px-3 mb-2'>{title.slice(0, 50)} <span className='font-bold text-yellow-500'> See More...</span></p>
                     </div>
 
                 </div>

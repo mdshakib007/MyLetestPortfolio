@@ -4,10 +4,12 @@ import { BiWorld } from "react-icons/bi";
 import { PiHandsClapping, PiShareFatLight } from "react-icons/pi";
 import { CiRead } from "react-icons/ci";
 import { IoSend } from "react-icons/io5";
+import { FaCommentDots, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { handleClap, handleComment } from '../../utils/blogActions';
 import toast from 'react-hot-toast';
 import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
 import { HashLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -16,9 +18,12 @@ const PostDetails = () => {
     const { postId } = useParams();
     const [postDetails, setPostDetails] = useState({});
     const [totalClaps, setTotalClaps] = useState(0);
+    const [nextPage, setNextPage] = useState(null);
+    const [prevPage, setPrevPage] = useState(null);
     const [comments, setComments] = useState([]);
     const [commentCount, setCommentCount] = useState(0);
     const [loading, setLoading] = useState(false);
+    const [loadingComments, setLoadingComments] = useState(false);
 
     const clapPost = async () => {
         try {
@@ -56,6 +61,38 @@ const PostDetails = () => {
         }
     };
 
+    const fetchCommentList = async (url = `${BACKEND_URL}/api/v1/blog/posts/${postId}/comments/`) => {
+        setLoadingComments(true);
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            setComments(data.results);
+            setCommentCount(data.count);
+            setNextPage(data.next);
+            setPrevPage(data.previous);
+        } catch (error) {
+            console.error("Error fetching comments:", error);
+        } finally {
+            setLoadingComments(false);
+        }
+    };
+
+    // Handle Next Page
+    const handleNextPage = () => {
+        if (nextPage) {
+            fetchCommentList(nextPage);
+        }
+    };
+
+    // Handle Previous Page
+    const handlePrevPage = () => {
+        if (prevPage) {
+            fetchCommentList(prevPage);
+        }
+    };
+
+
     useEffect(() => {
         setLoading(true);
         fetch(`${BACKEND_URL}/api/v1/blog/posts/${postId}/`)
@@ -63,7 +100,7 @@ const PostDetails = () => {
             .then(data => {
                 setPostDetails(data);
                 setTotalClaps(data.clap_count || 0);
-                setComments(data.comments || []);
+                fetchCommentList();
                 setCommentCount(data.comments?.length || 0);
             })
             .catch(err => console.error("Error fetching post: ", err))
@@ -157,18 +194,47 @@ const PostDetails = () => {
                             </div>
                         </div>
 
-                        <h1 className='my-2 text-lg font-semibold'>Recent Comments</h1>
-                        <div className="space-y-4">
-                            {comments.map((comment, index) => (
-                                <div key={index} className="flex items-start gap-2">
-                                    <img src="/shakib.png" alt="User" className="h-8 w-8 rounded-full" />
-                                    <div className='bg-gray-800 p-3 rounded-lg'>
-                                        <p className="text-sm font-semibold text-yellow-500">{comment.name}</p>
-                                        <p className="text-sm text-gray-300">{comment.body}</p>
+                        <h1 className='my-2 text-lg font-semibold'>Showing Comments {`${comments.length}/${commentCount}`}</h1>
+
+                        {
+                            loadingComments ? <div className="h-52 flex justify-center items-center">
+                                <HashLoader color="#facc15" size={50} />
+                            </div>
+                                :
+                                <div className="space-y-4">
+                                    {comments.map((comment, index) => (
+                                        <div key={index} className="flex items-start gap-2">
+                                            <img src="/shakib.png" alt="User" className="h-8 w-8 rounded-full" />
+                                            <div className='bg-gray-800 p-3 rounded-lg'>
+                                                <p className="text-sm font-semibold text-yellow-500">{comment.name}</p>
+                                                <p className="text-sm text-gray-300">{comment.body}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    {
+                                        comments.length === 0 && <p className='flex justify-center items-center gap-2 my-10'><FaCommentDots /> Be the first to comment</p>
+                                    }
+
+
+                                    <div className='flex justify-between'>
+                                        <button
+                                            className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            onClick={handlePrevPage}
+                                            disabled={!prevPage}  // Disable when there is no previous page
+                                        >
+                                            <FaArrowLeft /> Previous
+                                        </button>
+
+                                        <button
+                                            className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            onClick={handleNextPage}
+                                            disabled={!nextPage}  // Disable when there is no next page
+                                        >
+                                            Next <FaArrowRight />
+                                        </button>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
+                        }
                     </div>
                 </div>
             }
