@@ -11,7 +11,7 @@ const Skills = () => {
                     <span className='font-bold text-yellow-500'>Frontend: </span>HTML ┊ CSS ┊ Bootstrap ┊ Tailwindcss ┊ React <br />
                     <span className='font-bold text-yellow-500'>Backend: </span>Django ┊ Django REST Framework ┊ MySQL ┊ Postgresql ┊ SQLite <br />
                     <span className='font-bold text-yellow-500'>Data Science: </span>Pandas ┊ Numpy ┊ Jupyter Notebook <br />
-                    <span className='font-bold text-yellow-500'>Others: </span>DSA ┊ CP ┊ Git ┊ Github ┊ Linux(Ubuntu) ┊ Vercel ┊ Markdown ┊ Supabase <br />
+                    <span className='font-bold text-yellow-500'>Others: </span>DSA ┊ CP ┊ Firebase ┊ Git ┊ Github ┊ Linux(Ubuntu) ┊ Vercel ┊ Markdown ┊ Supabase <br />
                 </p>
                 <div className='mt-5 space-y-2'>
                     <p className='font-bold text-yellow-500'>Proficient in:</p>
