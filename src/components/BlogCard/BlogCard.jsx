@@ -72,11 +72,22 @@ const BlogCard = ({ blogPost }) => {
                     <div>
                         <h4 className='text-lg font-bold'>MD Shakib Ahmed</h4>
                         <p className='text-sm text-gray-300 flex items-center gap-1'>
-                            {created_at.slice(0, 10)} • <BiWorld />
+                            {created_at && (
+                                <>
+                                    {new Date(created_at).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    })} • <BiWorld />
+                                </>
+                            )}
+
                         </p>
                     </div>
                 </div>
-                <p className='flex items-center gap-1 text-gray-300 tooltip' data-tip='Total Reads'>
+                <p className='flex items-center gap-1 text-gray-300'>
                     <CiRead /> {reads}
                 </p>
             </div>

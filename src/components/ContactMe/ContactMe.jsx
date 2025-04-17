@@ -34,7 +34,7 @@ const ContactMe = () => {
                 <img src="/contact.svg" alt="" className='mx-6 h-64 lg:h-96' />
                 <div className=''>
                     <a
-                        className='text-lg md:text-xl lg:text-3xl font-bold cursor-pointer text-yellow-500'
+                        className='text-sm sm:text-lg md:text-xl lg:text-3xl font-bold cursor-pointer text-yellow-500'
                         href='mailto:shakibahmed.528874@gmail.com' >
                         shakibahmed.528874@gmail.com
                     </a>
@@ -43,7 +43,7 @@ const ContactMe = () => {
                         onSubmit={handleSubscribe}
                     >
                         <fieldset className="border p-4 rounded-md">
-                            <legend className="text-lg font-semibold mb-2">Subscribe to my blog</legend>
+                            <legend className="text-lg font-semibold mb-2">Get new post notification</legend>
                             <div className="flex items-center border-b border-yellow-500 py-2">
                                 <svg className="h-6 w-6 text-gray-300 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor">

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import BlogCard from '../BlogCard/BlogCard';
-import { Link } from 'react-router';
+import { HashLink } from 'react-router-hash-link';
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 
@@ -26,11 +26,11 @@ const RecentBlogs = () => {
                 }
             </div>
             <div className='flex justify-center items-center'>
-                <Link
+                <HashLink
                     className='btn btn-wide btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
-                    to='/posts'>
+                    to='/posts#'>
                     All Posts
-                </Link>
+                </HashLink>
             </div>
         </section>
     );

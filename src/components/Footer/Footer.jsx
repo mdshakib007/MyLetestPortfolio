@@ -1,7 +1,9 @@
 import React from 'react';
 import navItems from '../../data/navItems';
-import { FaFacebook, FaGithub, FaLink, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaExternalLinkAlt } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
+import { HashLink } from 'react-router-hash-link';
+
 
 const Footer = () => {
     return (
@@ -16,31 +18,56 @@ const Footer = () => {
                                     href="https://youtube.com/@AlgoAspire/"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-yellow-500 transition duration-300"
+                                    className="hover:text-yellow-500 transition duration-300 flex gap-2 items-center"
                                 >
-                                    {`${item} ↗`}
+                                    {item} <FaExternalLinkAlt />
+                                </a>
+                            ) : item === "Resume" ? (
+                                <a
+                                    href='https://drive.google.com/file/d/1hGNDn0s7M8QvMDP2qBaGRP2F0RIXtKYO/view?usp=sharing'
+                                    target='_blank'
+                                    className="hover:text-yellow-500 transition duration-300 flex gap-2 items-center"
+                                >
+                                    {item} <FaExternalLinkAlt />
                                 </a>
                             ) : (
-                                <a
-                                    href={`#${item.toLowerCase().replace(/\s+/g, "-")}`}
+                                <HashLink
+                                    to={`/#${item.toLowerCase().replace(/\s+/g, "-")}`}
                                     className="hover:text-yellow-500 transition duration-300"
                                 >
                                     {item}
-                                </a>
+                                </HashLink>
                             )}
                         </div>
                     ))}
                 </div>
 
-                {/* Optional Social Links */}
+                {/* Social Links */}
                 <div className="flex justify-center space-x-6 mb-4 text-2xl">
-                    <a href="https://wa.me/8801608897980" rel="noopener noreferrer" className="hover:text-yellow-500 transition duration-300">
+                    <a
+                        href="https://wa.me/8801608897980"
+                        rel="noopener noreferrer"
+                        className="hover:text-yellow-500 transition duration-300 tooltip tooltip-warning"
+                        data-tip="WhatsApp"
+                    >
                         <IoLogoWhatsapp />
                     </a>
-                    <a href="https://github.com/mdshakib007" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500 transition duration-300">
+                    <a
+                        href="https://github.com/mdshakib007"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-yellow-500 transition duration-300 tooltip tooltip-warning"
+                        data-tip="GitHub"
+                    >
                         <FaGithub />
                     </a>
-                    <a href="https://www.linkedin.com/in/mdshakib00777/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500 transition duration-300">
+                    <a
+                        href="https://www.linkedin.com/in/mdshakib00777/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-yellow-500 transition duration-300 tooltip tooltip-warning"
+                        data-tip="LinkedIn"
+                    >
                         <FaLinkedin />
                     </a>
                 </div>

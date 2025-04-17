@@ -9,7 +9,6 @@ import { handleClap, handleComment } from '../../utils/blogActions';
 import toast from 'react-hot-toast';
 import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
 import { HashLoader } from 'react-spinners';
-import { Link } from 'react-router-dom';
 
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -109,25 +108,35 @@ const PostDetails = () => {
 
 
     return (
-        <section id={`post-${postId}-details`} className='container mx-auto mt-24 items-center px-6 max-w-4xl'>
+        <section id={`post-${postId}-details`} className='container mx-auto items-center px-6 max-w-4xl'>
             {
                 loading ? (
-                    <div className="min-h-[50vh] flex justify-center items-center h-32">
+                    <div className="min-h-screen flex justify-center items-center h-32">
                         <HashLoader color="#facc15" size={50} />
                     </div>
 
-                ) : <div className='bg-gray-700 rounded-lg shadow-md shadow-gray-900'>
+                ) : <div className='bg-gray-700 shadow-md shadow-gray-900'>
                     <div className='flex justify-between items-center p-3'>
                         <div className='flex gap-4 items-center'>
                             <img src="/shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
                             <div>
                                 <h4 className='text-lg font-bold'>MD Shakib Ahmed</h4>
                                 <p className='text-sm text-gray-300 flex items-center gap-1'>
-                                    {postDetails?.created_at?.slice(0, 10)} • <BiWorld />
+                                    {postDetails?.created_at && (
+                                        <>
+                                            {new Date(postDetails.created_at).toLocaleString('en-US', {
+                                                year: 'numeric',
+                                                month: 'long',
+                                                day: 'numeric',
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                            })} • <BiWorld />
+                                        </>
+                                    )}
                                 </p>
                             </div>
                         </div>
-                        <p className='flex items-center gap-1 text-gray-300 tooltip' data-tip='Total Reads'>
+                        <p className='flex items-center gap-1 text-gray-300'>
                             <CiRead /> {postDetails?.reads}
                         </p>
                     </div>

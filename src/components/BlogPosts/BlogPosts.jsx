@@ -66,7 +66,7 @@ const BlogPosts = () => {
     };
 
     return (
-        <section id='all-blogs' className='container mx-auto mt-24 items-center px-6 max-w-4xl'>
+        <section id='all-blogs' className='container mx-auto mt-5 items-center px-6 max-w-4xl'>
 
             {/* Search Bar */}
             <form onSubmit={handleSearch}>
@@ -115,15 +115,15 @@ const BlogPosts = () => {
 
             {/* Show loader when loading */}
             {loading ? (
-                <div className="min-h-[50vh] flex justify-center items-center h-32">
+                <div className="min-h-screen flex justify-center pt-20 h-32">
                     <HashLoader color="#facc15" size={50} />
                 </div>
             ) : totalPosts === 0 ? (
-                <div className='min-h-[50vh] flex justify-center items-center'>
+                <div className='min-h-screen flex justify-center items-center'>
                     <h1 className='text-2xl md:text-4xl'>No Post Found</h1>
                 </div>
             ) : (
-                <div className='min-h-[50vh] grid grid-cols-1 gap-5'>
+                <div className='min-h-screen grid grid-cols-1 gap-5'>
                     {posts.map(post => (
                         <BlogCard key={post.id} blogPost={post} />
                     ))}

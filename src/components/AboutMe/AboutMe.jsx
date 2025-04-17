@@ -1,8 +1,11 @@
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import ContactIDs from '../ContactIDs/ContactIDs';
+import { IoLogoWhatsapp } from "react-icons/io";
+
 
 const AboutMe = () => {
     return (
-        <section className="container mx-auto mt-24 px-6">
+        <section className="container mx-auto mt-5 px-6">
             <div className="flex flex-col-reverse md:flex-row md:justify-between items-center">
                 <div className="md:w-1/2 mt-8">
                     <h1 className="text-5xl md:text-6xl font-medium mb-5">
@@ -13,7 +16,7 @@ const AboutMe = () => {
                             <span className="text-green-500"> Pupil </span>
                             at CodeForces ┊
                             <span className="text-green-500"> 2⋆ </span>
-                            at CodeChef ┊ 1000+ Problem Solved ┊ Django ┊ DRF ┊ Tailwind ┊ React
+                            at CodeChef ┊ 1200+ Problem Solved ┊ Django ┊ DRF ┊ Tailwind ┊ React
                         </span>
                         <br />
                         Passionate about{" "}
@@ -33,12 +36,24 @@ const AboutMe = () => {
                         , a 100% free e-learning platform (Beyond Learning!).
                     </p>
                     <ContactIDs></ContactIDs>
-                    <a href="#contact-me"
-                        className='btn mt-5 bg-yellow-500 text-lg text-black font-bold'>
-                        Contact me
-                    </a>
+                    <div className="flex items-center justify-center gap-5">
+                        <a
+                            href="https://wa.me/8801608897980"
+                            target='_blank'
+                            className='btn mt-5 bg-yellow-500 text-lg text-black font-bold'
+                        >
+                            <IoLogoWhatsapp />Message
+                        </a>
+                        <a
+                            href="https://drive.google.com/file/d/1hGNDn0s7M8QvMDP2qBaGRP2F0RIXtKYO/view?usp=sharing"
+                            target='_blank'
+                            className='btn mt-5 bg-yellow-500 text-lg text-black font-bold'
+                        >
+                            Resume <FaExternalLinkAlt />
+                        </a>
+                    </div>
                 </div>
-                <div className="md:w-1/2 flex justify-center md:mt-8">
+                <div className="md:w-1/2 flex md:justify-end justify-center md:mt-8">
                     <img
                         src="/shakib.jpeg"
                         alt="MD Shakib Ahmed"

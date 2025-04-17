@@ -1,5 +1,6 @@
 const navItems = [
     "AlgoAspire",
+    "Resume",
     "Skills",
     "Education",
     "Experiences",
@@ -8,7 +9,6 @@ const navItems = [
     "Blogs",
     "Talks",
     "Contact Me"
-  ];
-  
-  export default navItems;
-  
+];
+
+export default navItems;

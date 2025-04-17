@@ -13,7 +13,7 @@ import TalksAndFeatures from '../TalksAndFeatures/TalksAndFeatures';
 const Home = () => {
 
     return (
-        <main className='min-h-screen'>
+        <>
             <AboutMe></AboutMe>
             <Skills></Skills>
             <Education></Education>
@@ -23,7 +23,7 @@ const Home = () => {
             <RecentBlogs></RecentBlogs>
             <TalksAndFeatures></TalksAndFeatures>
             <ContactMe></ContactMe>
-        </main>
+        </>
     );
 };
 
