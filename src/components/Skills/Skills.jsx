@@ -9,8 +9,8 @@ const Skills = () => {
                 <p className='space-x-3 text-lg'>
                     <span className='font-bold text-yellow-500'>Languages: </span>C ┊ C++ ┊ Python ┊ JavaScript <br />
                     <span className='font-bold text-yellow-500'>Frontend: </span>HTML ┊ CSS ┊ Bootstrap ┊ Tailwindcss ┊ React <br />
-                    <span className='font-bold text-yellow-500'>Backend: </span>Django ┊ Django REST Framework ┊ MySQL ┊ PostgreSQL ┊ SQLite <br />
-                    <span className='font-bold text-yellow-500'>Auth: </span>Token ┊ JWT ┊ Firebase <br />
+                    <span className='font-bold text-yellow-500'>Backend: </span>Django ┊ Django REST Framework ┊ MySQL ┊ Django ORM <br />
+                    <span className='font-bold text-yellow-500'>Auth: </span>OAuth ┊ JWT ┊ Firebase <br />
                     <span className='font-bold text-yellow-500'>Data Science: </span>Pandas ┊ NumPy ┊ Jupyter Notebook <br />
                     <span className='font-bold text-yellow-500'>Video: </span>GIMP ┊ ShotCut ┊ Canva ┊ CapCut ┊ LibreOffice <br />
                     <span className='font-bold text-yellow-500'>Others: </span>DSA ┊ CP ┊ Git ┊ Github ┊ Linux(Ubuntu) ┊ Vercel ┊ Markdown ┊ Supabase <br />

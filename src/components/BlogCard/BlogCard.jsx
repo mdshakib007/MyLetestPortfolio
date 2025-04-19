@@ -70,16 +70,14 @@ const BlogCard = ({ blogPost }) => {
                 <div className='flex gap-4 items-center'>
                     <img src="/shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
                     <div>
-                        <h4 className='text-lg font-bold'>MD Shakib Ahmed</h4>
-                        <p className='text-sm text-gray-300 flex items-center gap-1'>
+                        <h4 className='md:text-lg font-bold'>MD Shakib Ahmed</h4>
+                        <p className='text-xs md:text-sm text-gray-300 flex items-center gap-1'>
                             {created_at && (
                                 <>
                                     {new Date(created_at).toLocaleString('en-US', {
                                         year: 'numeric',
                                         month: 'long',
-                                        day: 'numeric',
-                                        hour: '2-digit',
-                                        minute: '2-digit',
+                                        day: 'numeric'
                                     })} • <BiWorld />
                                 </>
                             )}

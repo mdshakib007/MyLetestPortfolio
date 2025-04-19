@@ -108,7 +108,7 @@ const PostDetails = () => {
 
 
     return (
-        <section id={`post-${postId}-details`} className='container mx-auto items-center px-6 max-w-4xl'>
+        <section id={`post-${postId}-details`} className='container mx-auto items-center px-2 max-w-4xl'>
             {
                 loading ? (
                     <div className="min-h-screen flex justify-center items-center h-32">
@@ -120,8 +120,8 @@ const PostDetails = () => {
                         <div className='flex gap-4 items-center'>
                             <img src="/shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
                             <div>
-                                <h4 className='text-lg font-bold'>MD Shakib Ahmed</h4>
-                                <p className='text-sm text-gray-300 flex items-center gap-1'>
+                                <h4 className='md:text-lg font-bold'>MD Shakib Ahmed</h4>
+                                <p className='text-xs md:text-sm text-gray-300 flex items-center gap-1'>
                                     {postDetails?.created_at && (
                                         <>
                                             {new Date(postDetails.created_at).toLocaleString('en-US', {
