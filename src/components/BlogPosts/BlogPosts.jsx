@@ -33,16 +33,11 @@ const BlogPosts = () => {
                 setCurrentPage(page);
                 setIsSearching(!!search);
                 setPageTitle(search ? `Showing results for: "${search}"` : "All Posts");
-
-                // Update URL params
-                const newParams = {};
-                if (search) newParams.q = search;
-                if (page > 1) newParams.page = page;
-                setSearchParams(newParams);
             })
             .catch(error => console.error("Error fetching posts:", error))
             .finally(() => setLoading(false));
     };
+
 
     // Load data on page load (check for URL query parameter)
     useEffect(() => {
@@ -55,18 +50,23 @@ const BlogPosts = () => {
     // Handle search submission
     const handleSearch = (e) => {
         e.preventDefault();
-        fetchPosts(1, searchTerm);
+        const newParams = {};
+        if (searchTerm) newParams.q = searchTerm;
+        newParams.page = 1;
+        setSearchParams(newParams);
     };
+
 
     // Clear search and reset posts
     const clearSearch = () => {
         setSearchTerm("");
         setIsSearching(false);
-        fetchPosts();
+        setSearchParams({}); 
     };
 
+
     return (
-        <section id='all-blogs' className='container mx-auto mt-5 items-center px-6 max-w-4xl'>
+        <section id='all-blogs' className='container mx-auto mt-5 items-center px-2 max-w-4xl'>
 
             {/* Search Bar */}
             <form onSubmit={handleSearch}>
@@ -79,15 +79,6 @@ const BlogPosts = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        {isSearching && (
-                            <button
-                                type="button"
-                                onClick={clearSearch}
-                                className="p-2 text-gray-400 hover:text-white transition"
-                            >
-                                <IoClose size={22} />
-                            </button>
-                        )}
                         <button
                             type="submit"
                             className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition hover:scale-110"
@@ -106,7 +97,7 @@ const BlogPosts = () => {
                 {isSearching && (
                     <button
                         onClick={clearSearch}
-                        className="text-gray-400 hover:text-white transition"
+                        className="text-gray-400 hover:text-yellow-500 transition cursor-pointer"
                     >
                         <IoClose size={28} />
                     </button>
@@ -135,21 +126,27 @@ const BlogPosts = () => {
             {!loading && (
                 <div className='flex justify-between items-center mx-2 my-5'>
                     <button
-                        onClick={() => fetchPosts(currentPage - 1, searchTerm)}
+                        onClick={() => {
+                            setSearchParams({ q: searchTerm, page: currentPage - 1 });
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
                         disabled={!prevPage}
-                        className={`btn bg-yellow-500 text-black ${!prevPage && 'cursor-not-allowed'}`}
+                        className={`btn bg-yellow-500 text-black`}
                     >
-                        <FaArrowLeft /> Previous
+                        <FaArrowLeft />
                     </button>
 
-                    <span className='text-gray-400 text-lg'>
+                    <span className='text-gray-400 text-xs md:text-lg'>
                         {posts.length} / {totalPosts} Posts
                     </span>
 
                     <button
-                        onClick={() => fetchPosts(currentPage + 1, searchTerm)}
+                        onClick={() => {
+                            setSearchParams({ q: searchTerm, page: currentPage + 1 })
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
                         disabled={!nextPage}
-                        className={`btn bg-yellow-500 text-black ${!nextPage && 'cursor-not-allowed'}`}
+                        className={`btn bg-yellow-500 text-black`}
                     >
                         Next <FaArrowRight />
                     </button>

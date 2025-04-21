@@ -3,7 +3,7 @@ import React from 'react';
 const Skills = () => {
     return (
         <section id='skills' className='container mx-auto flex flex-col-reverse md:flex-row justify-between mt-24 items-center'>
-            <img src="skills.svg" alt="" className='mx-6 h-64 lg:h-96'/>
+            <img src="skills.svg" alt="" className='mx-6 h-64 lg:h-96 hidden md:block'/>
             <div className='px-6'>
                 <h1 className='text-4xl md:text-6xl mb-5'>Skills</h1>
                 <p className='space-x-3 text-lg'>

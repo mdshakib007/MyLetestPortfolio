@@ -31,7 +31,7 @@ const ContactMe = () => {
         <section id='contact-me' className='container mx-auto mt-24 px-6'>
             <h1 className='text-4xl md:text-6xl mb-5'>Contact Me</h1>
             <div className='flex flex-col-reverse lg:flex-row justify-between items-center'>
-                <img src="/contact.svg" alt="" className='mx-6 h-64 lg:h-96' />
+                <img src="/contact.svg" alt="" className='mx-6 h-64 hidden md:block' />
                 <div className=''>
                     <a
                         className='text-sm sm:text-lg md:text-xl lg:text-3xl font-bold cursor-pointer text-yellow-500'

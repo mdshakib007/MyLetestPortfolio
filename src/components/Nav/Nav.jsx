@@ -74,6 +74,16 @@ const Nav = () => {
                                     >
                                         {item} <FaExternalLinkAlt />
                                     </a>
+                                ) : item === "Blogs" ? (
+                                    <HashLink
+                                        smooth
+                                        to={`/posts#`}
+                                        onClick={() => handleNavClick(item)}
+                                        className={`hover:text-yellow-500 transition duration-300 ${activeRoute === item ? "border-b-2 border-yellow-500 text-yellow-500" : ""
+                                            }`}
+                                    >
+                                        {item}
+                                    </HashLink>
                                 ) : (
                                     <HashLink
                                         smooth
@@ -128,6 +138,16 @@ const Nav = () => {
                                     >
                                         {item} <FaExternalLinkAlt />
                                     </a>
+                                ) : item === "Blogs" ? (
+                                    <HashLink
+                                        smooth
+                                        to={`/posts#`}
+                                        onClick={() => handleNavClick(item)}
+                                        className={`hover:text-yellow-500 transition duration-300 ${activeRoute === item ? "border-b-2 border-yellow-500 text-yellow-500" : ""
+                                            }`}
+                                    >
+                                        {item}
+                                    </HashLink>
                                 ) : (
                                     <HashLink
                                         smooth

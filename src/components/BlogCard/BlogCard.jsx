@@ -65,7 +65,7 @@ const BlogCard = ({ blogPost }) => {
     };
 
     return (
-        <div className='bg-gray-700 rounded-lg shadow-md shadow-gray-900 flex flex-col h-full'>
+        <div className='bg-gray-700 rounded-box shadow-md shadow-gray-900 flex flex-col h-full'>
             <div className='flex justify-between items-center p-3'>
                 <div className='flex gap-4 items-center'>
                     <img src="/shakib.jpeg" alt="shakib" className='h-14 w-14 rounded-full' />
@@ -81,7 +81,6 @@ const BlogCard = ({ blogPost }) => {
                                     })} • <BiWorld />
                                 </>
                             )}
-
                         </p>
                     </div>
                 </div>
