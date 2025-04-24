@@ -4,7 +4,7 @@ import { HiSearch } from "react-icons/hi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import BlogCard from '../BlogCard/BlogCard';
-import { HashLoader } from 'react-spinners';
+import PostListSkeleton from '../Loading/PostListSkeleton';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -61,7 +61,7 @@ const BlogPosts = () => {
     const clearSearch = () => {
         setSearchTerm("");
         setIsSearching(false);
-        setSearchParams({}); 
+        setSearchParams({});
     };
 
 
@@ -71,7 +71,7 @@ const BlogPosts = () => {
             {/* Search Bar */}
             <form onSubmit={handleSearch}>
                 <div className="animate-slideDown p-4">
-                    <div className="flex items-center bg-gray-800 rounded-full px-3 py-2 flex-1 shadow-lg shadow-black">
+                    <div className="flex items-center bg-gray-800 rounded-lg px-3 py-2 flex-1 shadow-lg shadow-black">
                         <input
                             type="text"
                             placeholder="Type to search..."
@@ -81,7 +81,7 @@ const BlogPosts = () => {
                         />
                         <button
                             type="submit"
-                            className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition hover:scale-110"
+                            className="p-2 bg-yellow-500 cursor-pointer rounded-lg text-black transition hover:scale-110"
                         >
                             <HiSearch size={18} />
                         </button>
@@ -106,9 +106,7 @@ const BlogPosts = () => {
 
             {/* Show loader when loading */}
             {loading ? (
-                <div className="min-h-screen flex justify-center pt-20 h-32">
-                    <HashLoader color="#facc15" size={50} />
-                </div>
+                <PostListSkeleton />
             ) : totalPosts === 0 ? (
                 <div className='min-h-screen flex justify-center items-center'>
                     <h1 className='text-2xl md:text-4xl'>No Post Found</h1>

@@ -9,6 +9,7 @@ import { handleClap, handleComment } from '../../utils/blogActions';
 import toast from 'react-hot-toast';
 import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
 import { HashLoader } from 'react-spinners';
+import PostDetailsSkeleton from '../Loading/PostDetailsSkeleton';
 
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -111,9 +112,7 @@ const PostDetails = () => {
         <section id={`post-${postId}-details`} className='container mx-auto items-center px-2 max-w-4xl'>
             {
                 loading ? (
-                    <div className="min-h-screen flex justify-center items-center h-32">
-                        <HashLoader color="#facc15" size={50} />
-                    </div>
+                    <PostDetailsSkeleton />
 
                 ) : <div className='bg-gray-700 shadow-md shadow-gray-900'>
                     <div className='flex justify-between items-center p-3'>
