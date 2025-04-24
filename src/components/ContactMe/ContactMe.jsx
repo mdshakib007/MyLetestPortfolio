@@ -5,11 +5,12 @@ import toast from 'react-hot-toast';
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const ContactMe = () => {
-
+    const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
 
     const handleSubscribe = (e) => {
         e.preventDefault();
+        setLoading(true);
 
         fetch(`${BACKEND_URL}/api/v1/subscription/subscribe/`, {
             method: 'POST',
@@ -20,11 +21,17 @@ const ContactMe = () => {
             .then(data => {
                 if (data.success) {
                     toast.success(data.success);
+                    setEmail('');
                 } else {
                     toast.error(data.email ? data.email : "Unexpected error occurred!");
                     console.log(data);
                 }
             })
+            .catch((error) => {
+                console.error("Subscription error:", error);
+                toast.error("Something went wrong!");
+            })
+            .finally(() => setLoading(false));
     }
 
     return (
@@ -55,12 +62,17 @@ const ContactMe = () => {
                                     type="email" id="subscribe-email" name="subscribe-email"
                                     className="appearance-none bg-transparent border-none w-full text-gray-300 mr-3 py-1 px-2 leading-tight focus:outline-none"
                                     placeholder="mail@site.com" required
+                                    value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
                             <button type="submit"
                                 className="btn mt-4 bg-yellow-500 text-black font-bold"
-                            >Subscribe</button>
+                            >
+                                {
+                                    loading ? 'Loading...' : 'Subscribe'
+                                }
+                            </button>
                         </fieldset>
                     </form>
                 </div>

@@ -8,8 +8,8 @@ import { FaCommentDots, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { handleClap, handleComment } from '../../utils/blogActions';
 import toast from 'react-hot-toast';
 import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
-import { HashLoader } from 'react-spinners';
 import PostDetailsSkeleton from '../Loading/PostDetailsSkeleton';
+import CommentsSkeleton from '../Loading/CommentsSkeleton';
 
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -205,9 +205,7 @@ const PostDetails = () => {
                         <h1 className='my-2 text-lg font-semibold'>Showing Comments {`${comments.length}/${commentCount}`}</h1>
 
                         {
-                            loadingComments ? <div className="h-52 flex justify-center items-center">
-                                <HashLoader color="#facc15" size={50} />
-                            </div>
+                            loadingComments ? <CommentsSkeleton />
                                 :
                                 <div className="space-y-4">
                                     {comments.map((comment, index) => (
