@@ -18,7 +18,7 @@ ReactDOM.createRoot(root).render(
 			<Route path='/posts/' element={<App></App>}>
 				<Route index element={<BlogPosts></BlogPosts>}></Route>
 			</Route>
-			<Route path='/posts/:postId' element={<App></App>}>
+			<Route path='/posts/:postSlug' element={<App></App>}>
 				<Route index element={<PostDetails></PostDetails>}></Route>
 			</Route>
 		</Routes>

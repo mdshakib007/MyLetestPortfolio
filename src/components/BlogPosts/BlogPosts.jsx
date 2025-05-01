@@ -32,7 +32,7 @@ const BlogPosts = () => {
                 setTotalPosts(data.count);
                 setCurrentPage(page);
                 setIsSearching(!!search);
-                setPageTitle(search ? `Showing results for: "${search}"` : "All Posts");
+                setPageTitle(search ? `Showing results for: ${search}` : "All Posts");
             })
             .catch(error => console.error("Error fetching posts:", error))
             .finally(() => setLoading(false));

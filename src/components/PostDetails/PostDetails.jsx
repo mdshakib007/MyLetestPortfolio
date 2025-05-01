@@ -10,12 +10,15 @@ import toast from 'react-hot-toast';
 import CustomMarkdown from '../CustomMarkdown/CustomMarkdown';
 import PostDetailsSkeleton from '../Loading/PostDetailsSkeleton';
 import CommentsSkeleton from '../Loading/CommentsSkeleton';
+import slugify from '../../utils/slugGenerator';
 
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const PostDetails = () => {
-    const { postId } = useParams();
+    const { postSlug } = useParams();
+    const postId = postSlug.split('-')[0];
+
     const [postDetails, setPostDetails] = useState({});
     const [totalClaps, setTotalClaps] = useState(0);
     const [nextPage, setNextPage] = useState(null);
@@ -24,6 +27,8 @@ const PostDetails = () => {
     const [commentCount, setCommentCount] = useState(0);
     const [loading, setLoading] = useState(false);
     const [loadingComments, setLoadingComments] = useState(false);
+    const [commentLoading, setCommentLoading] = useState(false);
+
 
     const clapPost = async () => {
         try {
@@ -40,18 +45,23 @@ const PostDetails = () => {
             toast.error("Please fill out the field");
             return;
         }
+
+        setCommentLoading(true);
         try {
             const commentData = await handleComment(postId, "Anonymous User", commentBody);
             document.getElementById(`comment-box`).value = "";
             setComments([commentData, ...comments]);
             setCommentCount(commentCount + 1);
-        } catch (error) {
-            console.error("Error adding comment:", error);
+        } catch {
+            toast.error("Something went wrong.");
+        } finally {
+            setCommentLoading(false);
         }
     }
 
     const copyPostLink = async () => {
-        const url = `https://mdshakib007.vercel.app/posts/${postId}`;
+        const slug = slugify(postDetails.title);
+        const url = `https://mdshakib007.vercel.app/posts/${postId}-${slug}`;
         try {
             await navigator.clipboard.writeText(url);
             toast.success("Post link copied to clipboard!");
@@ -195,10 +205,16 @@ const PostDetails = () => {
                                 />
                                 <button
                                     onClick={commentPost}
-                                    className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition text-xs md:text-sm hover:scale-110"
+                                    className="p-2 bg-yellow-500 cursor-pointer rounded-full text-black transition text-xs md:text-sm disabled:opacity-50 w-8 h-8 flex items-center justify-center"
+                                    disabled={commentLoading}
                                 >
-                                    <IoSend size={18} />
+                                    {commentLoading ? (
+                                        <span className="loading loading-spinner text-black w-4 h-4"></span>
+                                    ) : (
+                                        <IoSend size={18} />
+                                    )}
                                 </button>
+
                             </div>
                         </div>
 
@@ -224,19 +240,19 @@ const PostDetails = () => {
 
                                     <div className='flex justify-between'>
                                         <button
-                                            className='btn btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            className='btn bg-yellow-500 text-black mt-10'
                                             onClick={handlePrevPage}
-                                            disabled={!prevPage}  // Disable when there is no previous page
+                                            disabled={!prevPage}  // Disable when there is no previous comment page
                                         >
-                                            <FaArrowLeft /> Previous
+                                            <FaArrowLeft />
                                         </button>
 
                                         <button
-                                            className='btn btn-outline hover:bg-yellow-500 hover:text-black hover:shadow-lg shadow-black mt-10'
+                                            className='btn bg-yellow-500 text-black mt-10'
                                             onClick={handleNextPage}
-                                            disabled={!nextPage}  // Disable when there is no next page
+                                            disabled={!nextPage}  // Disable when there is no next comment page
                                         >
-                                            Next <FaArrowRight />
+                                            Next Comments <FaArrowRight />
                                         </button>
                                     </div>
                                 </div>
