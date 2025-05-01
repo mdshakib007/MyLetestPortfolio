@@ -5,6 +5,8 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import BlogCard from '../BlogCard/BlogCard';
 import PostListSkeleton from '../Loading/PostListSkeleton';
+import { Helmet } from 'react-helmet-async';
+
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -67,6 +69,42 @@ const BlogPosts = () => {
 
     return (
         <section id='all-blogs' className='container mx-auto mt-5 items-center px-2 max-w-4xl'>
+
+            {/* SEO */}
+            <Helmet>
+                <title>
+                    {isSearching
+                        ? `Search: ${searchTerm} - MD Shakib Ahmed`
+                        : `All Posts - MD Shakib Ahmed`}
+                </title>
+                <meta
+                    name="description"
+                    content={
+                        isSearching
+                            ? `Search results for "${searchTerm}" on MD Shakib Ahmed's blog.`
+                            : "Explore all blog posts by MD Shakib Ahmed on thoughts, programming, tech, and more."
+                    }
+                />
+                <meta
+                    name="keywords"
+                    content={`MD Shakib Ahmed, blog, posts${isSearching ? `, search, ${searchTerm}` : ""
+                        }`}
+                />
+                <meta property="og:title" content={document.title} />
+                <meta
+                    property="og:description"
+                    content={isSearching
+                        ? `Results for "${searchTerm}" - MD Shakib Ahmed's blog.`
+                        : "All posts by MD Shakib Ahmed."}
+                />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={window.location.href} />
+                {/* default image for listing page */}
+                <meta
+                    property="og:image"
+                    content="/shakib.jpeg"
+                />
+            </Helmet>
 
             {/* Search Bar */}
             <form onSubmit={handleSearch}>

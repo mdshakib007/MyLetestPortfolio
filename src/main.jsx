@@ -5,22 +5,25 @@ import App from './App'
 import Home from './components/Home/Home'
 import BlogPosts from './components/BlogPosts/BlogPosts'
 import PostDetails from './components/PostDetails/PostDetails'
+import { HelmetProvider } from 'react-helmet-async'
 
 
 const root = document.getElementById('root');
 
 ReactDOM.createRoot(root).render(
-	<BrowserRouter>
-		<Routes>
-			<Route path='' element={<App></App>}>
-				<Route index element={<Home></Home>}></Route>
-			</Route>
-			<Route path='/posts/' element={<App></App>}>
-				<Route index element={<BlogPosts></BlogPosts>}></Route>
-			</Route>
-			<Route path='/posts/:postSlug' element={<App></App>}>
-				<Route index element={<PostDetails></PostDetails>}></Route>
-			</Route>
-		</Routes>
-	</BrowserRouter>
+	<HelmetProvider>
+		<BrowserRouter>
+			<Routes>
+				<Route path='' element={<App></App>}>
+					<Route index element={<Home></Home>}></Route>
+				</Route>
+				<Route path='/posts/' element={<App></App>}>
+					<Route index element={<BlogPosts></BlogPosts>}></Route>
+				</Route>
+				<Route path='/posts/:postSlug' element={<App></App>}>
+					<Route index element={<PostDetails></PostDetails>}></Route>
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	</HelmetProvider>
 )
