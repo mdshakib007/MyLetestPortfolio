@@ -1,11 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+
 
 const Achievement = ({ achievement }) => {
     const { image, title, description, btn_text, btn_link } = achievement;
 
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: false, margin: '-100px' });
+
     return (
-        <div className="rounded-xl max-w-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 flex flex-col bg-slate-700 p-4 h-full items-center">
+        <motion.div
+            ref={ref}
+            initial={{ x: -100, opacity: 0 }}
+            animate={isInView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="rounded-xl max-w-2xl overflow-hidden flex flex-col bg-slate-700 p-4 h-full items-center"
+        >
             <img src={image} alt={title} className="h-24 mx-2 my-14 rounded-lg self-center" />
             <div className="flex flex-col items-center text-center flex-grow">
                 <h2 className="text-2xl lg:text-3xl m-3 font-bold text-yellow-500">{title}</h2>
@@ -19,7 +30,7 @@ const Achievement = ({ achievement }) => {
             >
                 {btn_text}
             </a>
-        </div>
+        </motion.div>
     );
 };
 

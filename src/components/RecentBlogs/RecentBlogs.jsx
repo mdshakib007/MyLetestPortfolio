@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import BlogCard from '../BlogCard/BlogCard';
 import { HashLink } from 'react-router-hash-link';
+
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 
