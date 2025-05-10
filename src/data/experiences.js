@@ -1,5 +1,12 @@
 const experiences = [
     {
+        organization: "Automation Solutionz",
+        image: "zeuz.png",
+        job_title: "Software Engineer Intern",
+        time: "May 2025 - Present",
+        description: "Joined as a Software Engineer Intern at ZeuZ.ai (Automation Solutionz), working on their flagship product, ZeuZ — the world's leading #1 test automation framework. During this 3-month internship, I am contributing to core product enhancements to improve functionality, performance, and user experience. Upon successful completion, I am set to transition into a Junior Software Engineer role."
+    },
+    {
         organization: "AlgoAspire",
         image: "AlgoAspire-icon.png",
         job_title: "Founder",
